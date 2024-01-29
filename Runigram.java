@@ -202,25 +202,26 @@ public class Runigram {
 		int len_c_s =source[0].length;
 		int len_r_t = target.length;
 		int len_c_t =target[0].length;
+		Color[][] temp =new Color[len_r_s][len_c_s];
 		setCanvas(source);
-		display(target);
 		double alpha;
-		StdDraw.pause(3000);
 		if(len_r_t!=len_r_s || len_c_t!=len_c_s){
 			Color[][] new_target =scaled(target,len_c_s,len_r_s);
-			display(new_target);
-			for(int i=0 ;i<n;i++){
+			for(int i=0 ;i<=n;i++){
+				temp=new_target;
 				alpha=((double)(n-i))/((double)n);
-				new_target=blend(source,new_target,alpha);;
-				Runigram.setCanvas(source);
+				temp=blend(source,temp,alpha);
+				display(temp);
+				StdDraw.pause(3000);
 			}
 		}
 		else {
-			for (int j=0 ;j<n;j++){
+			for (int j=0 ;j<=n;j++){
+				temp=target;
 				alpha=((double)(n-j))/((double)n);
-				target=blend(source,target,alpha);
-				Runigram.setCanvas(source);
-				display(target);
+				temp=blend(source,temp,alpha);
+				display(temp);
+				StdDraw.pause(3000);
 			}
 		}
 		//// Replace this comment with your code
